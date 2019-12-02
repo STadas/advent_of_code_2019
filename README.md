@@ -1,5 +1,9 @@
 <h1>Advent of Code 2019</h1>
-<p>First time participating in one of these</p>
 
-<p><strong>Day 1:</strong> easy as expected for day 1</p>
-<p>Not doing bigboi input because bigints are cringe</p>
+<h3><strong>Day 1</strong></h3>
+<p><strong>Regular input:</strong></p>
+<p>P1: 37789</p>
+<p>P2: 4982961</p>
+<p><strong>Bigboi input:</strong></p>
+<p>P1: 775590183677964888071500822198247363934305840106</p>
+<p>P2: 1163385275516947332107251233297371045901456662418</p>
