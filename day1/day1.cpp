@@ -1,17 +1,22 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <boost/multiprecision/cpp_int.hpp>
+
+using bigint_t = boost::multiprecision::int256_t;
 
 int main()
 {
     std::ifstream file;
-    file.open("input1");
+    file.open("bigboi1");
 
-    long sum = 0;
+    bigint_t sum1 = 0;
+    bigint_t sum2 = 0;
+    bool first = true;
 
     while (!file.eof())
     {
-        long fuel;
+        bigint_t fuel;
         file >> fuel;
         while (fuel > 0) //p2
         {
@@ -20,9 +25,17 @@ int main()
             fuel -= 2;
             if (fuel > 0)
             {
-                sum += fuel;
+                sum2 += fuel;
+                if (first == true)
+                {
+                    first = false;
+                    sum1 += fuel;
+                }
             }
         }
+        first = true;
     }
-    std::cout << sum << std::endl;
+
+    std::cout << "Part 1: " << sum1 << std::endl;
+    std::cout << "Part 2: " << sum2 << std::endl;
 }
