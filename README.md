@@ -1,6 +1,6 @@
 <h1>Advent of Code 2019</h1>
 
-<h3><strong>Day 1</strong></h3>
+<h2><strong>Day 1</strong></h2>
 <p><strong>Regular input:</strong></p>
 <p>P1: 37789</p>
 <p>P2: 4982961</p>
