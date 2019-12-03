@@ -55,12 +55,21 @@ int main()
     std::cout << "PART 1: " << 100 * 12 + 2 << " = " << opcalc(12, 2, op) << std::endl;
     int max = 100;
 
-    for (int i = 0; i < max; i++)
+    int dir = 1;
+
+    for (int i = max / 2; i < max; i += dir)
     {
-        for (int j = 0; j < max; j++)
+        for (int j = max / 2; j < max; j += dir)
         {
+
             long long calc = opcalc(i, j, op);
-            if (calc == 19690720)
+
+            if (calc > 19690720 && i == max / 2)
+            {
+                std::cout << "DOWN " << i << " " << j << " = " << calc << std::endl;
+                dir = -1;
+            }
+            else if (calc == 19690720)
             {
                 std::cout << "PART 2: " << 100 * i + j << " = 19690720" << std::endl;
                 file.close();

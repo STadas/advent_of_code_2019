@@ -12,8 +12,7 @@
 <p><strong>Regular:</strong></p>
 <p>P1: 1202 = 6627023</p>
 <p>P2: 4019 = 19690720</p>
-<p><strong>Bigboi:</strong></p>
+<p><strong>Bigboi (no bigints):</strong></p>
 <p>P1: 1202 = 78144</p>
 <p>P2: 8080 = 19690720</p>
-<p>Time: 0m3.595s</p>
-
+<p>Time: 0m0.723s</p>
