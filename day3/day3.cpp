@@ -19,7 +19,7 @@ vector<vector<string>> get_input()
 
 	ifstream file;
 
-	file.open("short1");
+	file.open("input");
 
 	vector<vector<string>> vect2d = {};
 	vector<string> lineVect = {};
@@ -28,7 +28,6 @@ vector<vector<string>> get_input()
 	while (!file.eof())
 	{
 		getline(file, line);
-		//cout << line << endl;
 		lineVect.push_back(line);
 	}
 
@@ -38,11 +37,10 @@ vector<vector<string>> get_input()
 	for (int i = 0; i < lineVect.size(); i++)
 	{
 		vector<string> tokens;
-		while ((pos = lineVect[i].find(',')) != string::npos)
+		stringstream check(lineVect[i]);
+		while (getline(check, token, ','))
 		{
-			token = lineVect[i].substr(0, pos);
 			tokens.push_back(token);
-			lineVect[i].erase(0, pos + 1);
 		}
 		vect2d.push_back(tokens);
 	}
@@ -80,36 +78,32 @@ vector<vector<Coords>> make_grid(vector<vector<string>> moves)
 			switch (instr[0])
 			{
 			case 'U':
-				for (int k = 1; k <= amount; k++)
+				for (int k = 0; k < amount; k++)
 				{
-					//cout << x << " " << y + k << endl;
 					Coords tempC = {x, y + k};
 					grid[i].push_back(tempC);
 				}
 				y += amount;
 				break;
 			case 'D':
-				for (int k = 1; k <= amount; k++)
+				for (int k = 0; k < amount; k++)
 				{
-					//cout << x << " " << y - k << endl;
 					Coords tempC = {x, y - k};
 					grid[i].push_back(tempC);
 				}
 				y -= amount;
 				break;
 			case 'R':
-				for (int k = 1; k <= amount; k++)
+				for (int k = 0; k < amount; k++)
 				{
-					//cout << x + k << " " << y << endl;
 					Coords tempC = {x + k, y};
 					grid[i].push_back(tempC);
 				}
 				x += amount;
 				break;
 			case 'L':
-				for (int k = 1; k <= amount; k++)
+				for (int k = 0; k < amount; k++)
 				{
-					//cout << x + k << " " << y << endl;
 					Coords tempC = {x - k, y};
 					grid[i].push_back(tempC);
 				}
@@ -129,7 +123,7 @@ int distance_function(Coords coords)
 	return fabs(coords.x) + fabs(coords.y);
 }
 
-void find_closest(vector<vector<Coords>> grid)
+void find_closest(vector<vector<Coords>> grid) // part 1
 {
 	Coords shortestCoords;
 	int closestDist = 0;
@@ -188,59 +182,36 @@ void find_closest(vector<vector<Coords>> grid)
 	cout << "PART 1:" << closestDist << endl;
 }
 
-int getSteps(vector<vector<Coords>> grid, int i, int which)
+void find_shortest(vector<vector<Coords>> grid) // part 2
 {
-	int steps = 0;
-	for (int j = i; j > 0; j--)
-	{
-		for (int k = j; j > k; k--)
-		{
-			if (grid[which][j].x == grid[which][k].x && grid[which][j].y == grid[which][k].y)
-			{
-				steps += getSteps(grid, j, which);
-			}
-		}
-		steps++;
-	}
-	return steps;
-}
-
-void find_shortest(vector<vector<Coords>> grid)
-{
-	int steps1 = 0;
-	int steps2 = 0;
 	int shortest = 0;
 
-	for (int i = 1; i < grid[0].size(); i++)
+	for (int i = 0; i < grid[0].size(); i++)
 	{
-		cout << steps1 << endl;
+		//cout << i << " / " << grid[0].size() << endl;
+		int x1 = grid[0][i].x;
+		int y1 = grid[0][i].y;
 
-		cout << grid[0][i].x << " ; " << grid[0][i].y << endl;
-		for (int j = 1; j < grid[1].size(); j++)
+		for (int j = 0; j < grid[1].size(); j++)
 		{
-			if (grid[0][i].x != 0 || grid[0][i].y != 0)
+			int x2 = grid[1][j].x;
+			int y2 = grid[1][j].y;
+
+			if (x1 == x2 && y1 == y2 && !(x1 == 0 && y1 == 0))
 			{
-				if (grid[0][i].x == grid[1][j].x && grid[0][i].y == grid[1][j].y)
-				{
-					steps1 = getSteps(grid, i, 0);
-					steps1 = getSteps(grid, j, 1);
-					if (shortest > steps1 + steps2 || shortest == 0)
-					{
-						shortest = steps1 + steps2;
-					}
-				}
+				cout << "==^==FOUND==^== " << i + j << " = " << x2 << ";" << y2 << endl;
+				cout << "PART 2: " << i + j << endl;
+				return;
 			}
 		}
 	}
-
-	cout << "PART 2: " << shortest << endl;
 }
 
 int main()
 {
 	vector<vector<Coords>> grid = make_grid(get_input());
 
-	//find_closest(grid);
+	find_closest(grid);
 
 	find_shortest(grid);
 

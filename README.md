@@ -19,7 +19,7 @@
 <h2><strong>Day 3</strong></h2>
 <p><strong>Regular:</strong></p>
 <p>P1: Done</p>
-<p>P2: Nope</p>
+<p>P2: Done</p>
 <h2><strong>Day 4</strong></h2>
 <p><strong>Regular:</strong></p>
 <p>P1: Done</p>
