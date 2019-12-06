@@ -2,9 +2,6 @@
 #include <iomanip>
 #include <vector>
 
-//#include <boost/multiprecision/cpp_int.hpp>
-//using bigint_t = boost::multiprecision::int256_t;
-
 int part_1(int minNum, int maxNum)
 {
 	int diff = maxNum - minNum;
