@@ -2,7 +2,6 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
-
 enum OPCODE
 {
     HALT = 99,
@@ -15,7 +14,6 @@ enum OPCODE
     LESS_THAN = 7,
     EQUALS = 8
 };
-
 void getParams(int i, std::vector<int> &op, int *value, int modes)
 {
     for (int j = 1; j <= 2; j++)
@@ -31,7 +29,6 @@ void getParams(int i, std::vector<int> &op, int *value, int modes)
         }
     }
 }
-
 int main()
 {
     std::ifstream file;
