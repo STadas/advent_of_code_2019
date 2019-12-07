@@ -20,3 +20,5 @@
 <p><strong>Regular done: </strong>P1, P2</p>
 <h3><strong>Day 6</strong></h3>
 <p><strong>Regular done: </strong>P1, P2</p>
+<h3><strong>Day 7</strong></h3>
+<p><strong>Regular done: </strong>P1, P2</p>
